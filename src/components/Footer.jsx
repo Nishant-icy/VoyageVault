@@ -10,8 +10,8 @@ export default function Footer() {
         </div>
         <div style={styles.info}>
           <p style={styles.text}>
-            VoyageVault helps you discover amazing tourist destinations around the world.
-            Whether you're looking for a budget beach trip or a luxury adventure, we've got you covered.
+            VoyageVault helps you discover the most incredible travel destinations across India.
+            From the snow-capped Himalayas to the beaches of Goa and Andaman, find your perfect Indian getaway.
           </p>
         </div>
       </div>

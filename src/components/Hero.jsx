@@ -11,13 +11,13 @@ export default function Hero({ searchQuery, setSearchQuery }) {
           <span style={styles.highlight}>Adventure</span>
         </h1>
         <p style={styles.desc}>
-          Discover amazing tourist spots around the world — from beaches to mountains, cities to hidden gems.
+          Discover the most beautiful places across India — from Himalayan peaks to tropical beaches, ancient forts to serene backwaters.
         </p>
         <div style={styles.searchBar}>
           <span style={styles.searchIcon}>🔍</span>
           <input
             type="text"
-            placeholder="Search destinations... (e.g. Bali, Paris, Adventure)"
+            placeholder="Search destinations... (e.g. Goa, Manali, Heritage)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={styles.input}

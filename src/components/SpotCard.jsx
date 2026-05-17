@@ -29,7 +29,7 @@ export default function SpotCard({ spot }) {
           <h3 style={styles.name}>{spot.name}</h3>
           <span style={styles.rating}>⭐ {spot.rating}</span>
         </div>
-        <p style={styles.country}>📍 {spot.country}</p>
+        <p style={styles.country}>📍 {spot.state}</p>
         <p style={styles.desc}>{spot.description}</p>
         <p style={styles.bestTime}>🗓️ Best time: <strong>{spot.bestTime}</strong></p>
         <div style={styles.tags}>
