@@ -1,49 +1,39 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Filters from "./components/Filters";
-import SpotGrid from "./components/SpotGrid";
 import Footer from "./components/Footer";
-import { spots } from "./data/spots";
+import HomePage from "./pages/HomePage";
+import ExplorePage from "./pages/ExplorePage";
+import AboutPage from "./pages/AboutPage";
+import LoginPage from "./pages/LoginPage";
 import "./App.css";
 
 export default function App() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [activeBudget, setActiveBudget] = useState("All");
-
-  const filteredSpots = useMemo(() => {
-    return spots.filter((spot) => {
-      const q = searchQuery.toLowerCase();
-      const matchSearch =
-        q === "" ||
-        spot.name.toLowerCase().includes(q) ||
-        spot.country.toLowerCase().includes(q) ||
-        spot.tags.some((t) => t.toLowerCase().includes(q)) ||
-        spot.category.toLowerCase().includes(q);
-
-      const matchCategory =
-        activeCategory === "All" || spot.category === activeCategory;
-
-      const matchBudget =
-        activeBudget === "All" || spot.budget === activeBudget;
-
-      return matchSearch && matchCategory && matchBudget;
-    });
-  }, [searchQuery, activeCategory, activeBudget]);
-
   return (
-    <div>
-      <Navbar />
-      <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <Filters
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        activeBudget={activeBudget}
-        setActiveBudget={setActiveBudget}
-      />
-      <SpotGrid spots={filteredSpots} />
-      <Footer />
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Login page - no navbar/footer */}
+          <Route path="/login" element={<LoginPage />} />
+
+          {/* All other pages - with navbar and footer */}
+          <Route
+            path="/*"
+            element={
+              <div>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/explore" element={<ExplorePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                </Routes>
+                <Footer />
+              </div>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

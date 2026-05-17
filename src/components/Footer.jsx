@@ -1,17 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer id="about" style={styles.footer}>
+    <footer style={styles.footer}>
       <div style={styles.content}>
         <div style={styles.brand}>
           <h3 style={styles.logo}>🌍 VoyageVault</h3>
-          <p style={styles.tagline}>Your personal travel recommendation guide.</p>
+          <p style={styles.tagline}>Your personal travel recommendation guide for India.</p>
+        </div>
+        <div style={styles.links}>
+          <p style={styles.linksTitle}>Quick Links</p>
+          <Link to="/" style={styles.link}>Home</Link>
+          <Link to="/explore" style={styles.link}>Explore</Link>
+          <Link to="/about" style={styles.link}>About</Link>
+          <Link to="/login" style={styles.link}>Login / Sign Up</Link>
         </div>
         <div style={styles.info}>
           <p style={styles.text}>
             VoyageVault helps you discover the most incredible travel destinations across India.
-            From the snow-capped Himalayas to the beaches of Goa and Andaman, find your perfect Indian getaway.
+            From the snow-capped Himalayas to the beaches of Goa and Andaman, find your perfect getaway.
           </p>
         </div>
       </div>
@@ -37,7 +45,7 @@ const styles = {
   },
   brand: {
     flex: "1",
-    minWidth: "200px",
+    minWidth: "180px",
   },
   logo: {
     margin: "0 0 8px",
@@ -49,9 +57,25 @@ const styles = {
     fontSize: "14px",
     margin: 0,
   },
+  links: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    minWidth: "120px",
+  },
+  linksTitle: {
+    fontWeight: "700",
+    fontSize: "14px",
+    margin: "0 0 4px",
+  },
+  link: {
+    color: "rgba(255,255,255,0.8)",
+    textDecoration: "none",
+    fontSize: "14px",
+  },
   info: {
     flex: "2",
-    minWidth: "260px",
+    minWidth: "220px",
   },
   text: {
     opacity: 0.8,
